@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include <sstream>
+#include <vector>
+#include "Enfermedad.h"
 using namespace std;
 class Paciente
 {
@@ -10,7 +12,7 @@ private:
 	string telefono;
 	string email;
 	string secuencia;
-	//lista de enfermedades
+	vector<Enfermedad> listaEnfermedades;
 
 public:
 
@@ -21,6 +23,7 @@ public:
 	string getTelefono();
 	string getEmail();
 	string getSecuencia();
+	vector<Enfermedad> getLista();
 
 	void setID(string);
 	void setNombre(string);

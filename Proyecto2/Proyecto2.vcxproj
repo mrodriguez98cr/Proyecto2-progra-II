@@ -139,11 +139,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CsvReader.h" />
+    <ClInclude Include="CsvWriter.h" />
     <ClInclude Include="Enfermedad.h" />
+    <ClInclude Include="IReader.h" />
+    <ClInclude Include="IWriter.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="MenuAnalizar.h" />
+    <ClInclude Include="MenuCarga.h" />
     <ClInclude Include="Paciente.h" />
+    <ClInclude Include="TransformadorCsv.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CSVReader.cpp" />
+    <ClCompile Include="CSVWriter.cpp" />
     <ClCompile Include="Enfermedad.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="MenuAnalizar.cpp" />
+    <ClCompile Include="MenuCarga.cpp" />
     <ClCompile Include="Paciente.cpp" />
     <ClCompile Include="principal.cpp" />
   </ItemGroup>
