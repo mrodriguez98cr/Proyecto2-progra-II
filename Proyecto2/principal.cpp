@@ -9,8 +9,10 @@ using namespace std;
 
 int main()
 {
-	/*MenuAnalizar* ma = new MenuAnalizar();
-	MenuCarga* mc = new MenuCarga();
+	vector<Paciente*> *personas = NULL;
+	vector<Enfermedad*>*enfer =NULL;
+	MenuAnalizar* ma = new MenuAnalizar();
+	MenuCarga* mc = new MenuCarga(enfer,personas);
 	Menu* men = new Menu(mc, ma);
 
 	men->invocarMenu();
@@ -20,7 +22,7 @@ int main()
 	Enfermedad* e = new Enfermedad("Cagadera", " caca");
 	
 	cout << p->toString() << endl;
-	cout << e->toString() << endl;*/
+	cout << e->toString() << endl;
 
 	/*IWriter<Paciente*>* writer = new CsvWriter<Paciente*>("personas.csv", new TransformadorCsvPaciente);
 	Paciente* p1 = new Paciente("117110640", "Marco Rodriguez", "8914-5640", "davidcr98@gmail.com", "AGAGAG");
@@ -52,7 +54,7 @@ int main()
 	delete readerp;*/
 
 
-	IReader<Enfermedad*>* readerE = new CsvReader<Enfermedad*>("enfermedades.csv", new TransformadorCsvEnfermedad());
+	/*IReader<Enfermedad*>* readerE = new CsvReader<Enfermedad*>("enfermedades.csv", new TransformadorCsvEnfermedad());
 	vector<Enfermedad*>* personas = readerE->leerTodos();
 
 	for (auto& persona : *personas)
@@ -61,7 +63,7 @@ int main()
 	}
 
 	delete personas;
-	delete readerE;
+	delete readerE;*/
 
 	return 0;
 

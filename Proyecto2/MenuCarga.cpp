@@ -32,8 +32,10 @@ string MenuCarga::logo()
 	return s.str();
 }
 
-MenuCarga::MenuCarga()
+MenuCarga::MenuCarga(vector<Enfermedad*> *x, vector<Paciente*> *y)
 {
+	enfermedades = x;
+	pacientes = y;
 }
 
 void MenuCarga::invocarMenu()
@@ -45,13 +47,13 @@ void MenuCarga::invocarMenu()
 		switch (opcion)
 		{
 		case '1':
-			//this->menuAdmin->invocarMenu();
+			cargarPacientes();
 			break;
 		case '2':
-			//this->menuCobro->invocarMenu();
+			cargarEnfermedades();
 			break;
 		case '3':
-			//this->menuCobro->invocarMenu();
+			generador();
 			break;
 		case opcionSalida:
 			break;
@@ -63,4 +65,43 @@ void MenuCarga::invocarMenu()
 
 MenuCarga::~MenuCarga()
 {
+	delete enfermedades;
+	delete pacientes;
+}
+
+void MenuCarga::cargarPacientes()
+{
+	IReader<Paciente*> *readerp = new CsvReader<Paciente*>("pacientes.csv", new TransformadorCsvPaciente());
+	pacientes = readerp->leerTodos();
+	pacientes->erase(pacientes->begin());
+	for (auto& persona : *pacientes)
+	{
+		cout << persona->toString() << endl;
+	}
+	system("pause");
+}
+
+void MenuCarga::cargarEnfermedades()
+{
+	IReader<Enfermedad*>* readerp = new CsvReader<Enfermedad*>("enfermedades.csv", new TransformadorCsvEnfermedad());
+	enfermedades = readerp->leerTodos();
+	enfermedades->erase(enfermedades->begin());
+	for (auto& enfer : *enfermedades)
+	{
+		cout << enfer->toString() << endl;
+	}
+	system("pause");
+}
+
+void MenuCarga::generador()
+{
+	
+	for (auto& enfer : *pacientes)
+	{
+		enfer->agregarLista(*enfermedades);
+		cout << enfer->toString();
+	}
+	system("pause");
+
+	//aqui se tiene que cargar la lista en json
 }

@@ -16,10 +16,13 @@ private:
 		vector<string>* campos = new vector<string>();
 		string valor;
 		istringstream iss(registroActual);
+		
+		
 		while (getline(iss, valor, ','))
 		{
 			campos->push_back(valor);
 		}
+		//
 		return campos;
 	}
 
@@ -40,10 +43,12 @@ public:
 		vector<T>* objetos = new vector<T>();
 		while (getline(this->entrada, registroActual))
 		{
+			
 			vector<string>* campos = this->generarCampos(registroActual);
 			objetos->push_back(this->transformadorCsv->fromStringVector(campos));
 			delete campos;
 		}
+		
 		return objetos;
 	}
 

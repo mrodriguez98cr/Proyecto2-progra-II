@@ -32,6 +32,8 @@ public:
 
 	Paciente* fromStringVector(vector<string>* vector) override
 	{
+		
+		
 		return new Paciente(vector->at(0), vector->at(1), vector->at(2), vector->at(3), vector->at(4));
 	}
 };
@@ -51,6 +53,7 @@ public:
 
 	Enfermedad* fromStringVector(vector<string>* vector) override
 	{
+		
 		return new Enfermedad(vector->at(0), vector->at(1));
 	}
 };

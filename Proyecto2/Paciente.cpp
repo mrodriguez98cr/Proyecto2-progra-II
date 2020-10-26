@@ -35,9 +35,14 @@ string Paciente::getSecuencia()
 	return secuencia;
 }
 
-vector<Enfermedad> Paciente::getLista()
+vector<Enfermedad*> Paciente::getLista()
 {
 	return listaEnfermedades;
+}
+
+Paciente::~Paciente()
+{
+	
 }
 
 void Paciente::setID(string x)
@@ -76,10 +81,32 @@ string Paciente::toString()
 		//<< "	Secuencia: " <<secuencia<< endl;
 	s << "----------------------------------------" << endl
 		<< "	Lista de enfermedades: " << endl
-		<< "----------------------------------------";
-		//vector. to string
+		<< "----------------------------------------"<< endl;
+	for (int i = 0; i < listaEnfermedades.size(); i++)
+	{
+		s << listaEnfermedades[i]->toString();
+	}
+	s << endl<<endl;
 
 	
 
 	return s.str();
+}
+
+void Paciente::agregarLista(vector<Enfermedad*> enfe)
+{
+	for (int i = 0; i < enfe.size(); i++)
+		if (buscador(enfe[i]->getSecuencia()))
+			listaEnfermedades.push_back(enfe[i]);
+
+}
+
+bool Paciente::buscador(string x)
+{
+	auto it = secuencia.find(x);
+
+	if (it != std::string::npos)
+		return true;
+	else
+		return false;
 }
