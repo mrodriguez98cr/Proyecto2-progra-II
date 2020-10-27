@@ -12,7 +12,7 @@ private:
 	string telefono;
 	string email;
 	string secuencia;
-	vector<Enfermedad*> listaEnfermedades;
+	vector<Enfermedad*> *listaEnfermedades;
 
 public:
 
@@ -31,6 +31,7 @@ public:
 	void setTelefono(string);
 	void setEmail(string);
 	void setSecuencia(string);
+	void setLista(vector<Enfermedad*>*);
 	
 	string toString();
 

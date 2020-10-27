@@ -7,7 +7,7 @@ Paciente::Paciente(string id, string name, string tel, string email, string secu
 	this->telefono = tel;
 	this->email = email;
 	this->secuencia = secuencia;
-	this->listaEnfermedades;
+	this->listaEnfermedades=new vector<Enfermedad*>();
 }
 
 string Paciente::getID()
@@ -37,7 +37,7 @@ string Paciente::getSecuencia()
 
 vector<Enfermedad*> Paciente::getLista()
 {
-	return listaEnfermedades;
+	return *listaEnfermedades;
 }
 
 Paciente::~Paciente()
@@ -70,6 +70,11 @@ void Paciente::setSecuencia(string x)
 	this->secuencia = x;
 }
 
+void Paciente::setLista(vector<Enfermedad*>* h)
+{
+	listaEnfermedades = h;
+}
+
 string Paciente::toString()
 {
 	stringstream s;
@@ -82,9 +87,9 @@ string Paciente::toString()
 	s << "----------------------------------------" << endl
 		<< "	Lista de enfermedades: " << endl
 		<< "----------------------------------------"<< endl;
-	for (int i = 0; i < listaEnfermedades.size(); i++)
+	for (auto& enfer : *listaEnfermedades)
 	{
-		s << listaEnfermedades[i]->toString();
+		s << enfer->toString() << endl;
 	}
 	s << endl<<endl;
 
@@ -96,8 +101,10 @@ string Paciente::toString()
 void Paciente::agregarLista(vector<Enfermedad*> enfe)
 {
 	for (int i = 0; i < enfe.size(); i++)
+	{
 		if (buscador(enfe[i]->getSecuencia()))
-			listaEnfermedades.push_back(enfe[i]);
+			listaEnfermedades->push_back(enfe[i]);
+	}
 
 }
 

@@ -1,43 +1,41 @@
 #pragma once
 #include"lib/json.hpp"
-#include "Modelo.h"
-#include "Enfermedad.h"
+#include "Paciente.h"
 using nlohmann::json;
 
-void to_json(json& j, const Pacientej& paciente)
+
+void to_json(json& j,  Paciente& paciente)
 {
 	json enfermedadesJson = json::array();
 
-	for (auto& enfe : *paciente.listaEnfermedades)
+	for (auto& enfermedad : *paciente.getLista())  //ni idea
 	{
-		json enfeJson = *enfe;
-		enfermedadesJson.push_back(enfeJson);
+		json EnfermedadJson = *enfermedad;
+		enfermedadesJson.push_back(EnfermedadJson);
 	}
 
-	//j = json{ {"id", paciente.id}, {"nombre", paciente.nombre}, {"direcciones", direccionesJson} };
+	j = json{ {"id", paciente.getID()}, {"nombre", paciente.getNombre()},{"telefono", paciente.getTelefono()},{"email", paciente.getEmail()},{"secuencia", paciente.getSecuencia()}, {"enfermedades", enfermedadesJson} };
 }
 
-void from_json(const json& j, Pacientej& paciente)
+
+void from_json(const json& j, Paciente& paciente)
 {
-	paciente.id = j.at("id").get<string>();
-	paciente.nombre = j.at("nombre").get<string>();
-	paciente.telefono = j.at("telefono").get<string>();
-	paciente.email = j.at("email").get<string>();
-	paciente.secuencia = j.at("secuencia").get<string>();
+	paciente.setID(j.at("id").get<string>());
+	paciente.setNombre(j.at("nombre").get<string>());
+	paciente.setTelefono(j.at("telefono").get<string>());
+	paciente.setEmail(j.at("email").get<string>());
+	json arregloEnfermedadesJson = j.at("enfermedades");
 
-	json arregloDireccionesJson = j.at("direcciones");
-
-	vector<Enfermedad*>* le = new vector<Enfermedad*>();
-	for (auto& objetoenferJson : arregloDireccionesJson)
+	vector<Enfermedad*>* listaEnfermedades = new vector<Enfermedad*>();
+	for (auto& objetoenfermedadJson : arregloEnfermedadesJson)
 	{
 		Enfermedad* enfermedad = new Enfermedad();
-		*enfermedad = objetoenferJson;
-		le->push_back(enfermedad);
+		*enfermedad = objetoenfermedadJson;
+		listaEnfermedades->push_back(enfermedad);
 	}
-	paciente.listaEnfermedades = le;
+	paciente.setLista(listaEnfermedades);
 
 }
-
 
 
 

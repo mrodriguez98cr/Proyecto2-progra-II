@@ -150,7 +150,6 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuAnalizar.h" />
     <ClInclude Include="MenuCarga.h" />
-    <ClInclude Include="Modelo.h" />
     <ClInclude Include="Paciente.h" />
     <ClInclude Include="TransformadorCsv.h" />
     <ClInclude Include="TransformadorJson.h" />
