@@ -65,8 +65,8 @@ void MenuCarga::invocarMenu()
 
 MenuCarga::~MenuCarga()
 {
-	delete enfermedades;
 	delete pacientes;
+	delete enfermedades;
 }
 
 void MenuCarga::cargarPacientes()

@@ -10,7 +10,7 @@ private:
 	string secuencia;
 
 public:
-
+	Enfermedad();
 	Enfermedad(string, string);
 
 	string getNombre();

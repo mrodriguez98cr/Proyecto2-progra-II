@@ -1,5 +1,11 @@
 #include "Enfermedad.h"
 
+Enfermedad::Enfermedad()
+{
+	this->nombre = " ";
+	this->secuencia = " ";
+}
+
 Enfermedad::Enfermedad(string enfermedad, string secuencia)
 {
 	this->nombre = enfermedad;

@@ -15,11 +15,11 @@ private:
 	char mostrarOpciones();
 	string logo();
 	vector<Enfermedad*> *enfermedades;
-	vector<Paciente*>*pacientes;
+	vector<Paciente*> *pacientes;
 
 
 public:
-	MenuCarga(vector<Enfermedad*>*, vector<Paciente*>*);
+	MenuCarga(vector<Enfermedad*> *, vector<Paciente*> *);
 	void invocarMenu();
 	~MenuCarga();
 	void cargarPacientes();
