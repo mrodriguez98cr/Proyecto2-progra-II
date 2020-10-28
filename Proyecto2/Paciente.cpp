@@ -10,34 +10,34 @@ Paciente::Paciente(string id, string name, string tel, string email, string secu
 	this->listaEnfermedades=new vector<Enfermedad*>();
 }
 
-string Paciente::getID()
+string Paciente::getID()const
 {
 	return id;
 }
 
-string Paciente::getNombre()
+string Paciente::getNombre()const
 {
 	return nombre;
 }
 
-string Paciente::getTelefono()
+string Paciente::getTelefono()const
 {
 	return telefono;
 }
 
-string Paciente::getEmail()
+string Paciente::getEmail()const
 {
 	return email;
 }
 
-string Paciente::getSecuencia()
+string Paciente::getSecuencia()const
 {
 	return secuencia;
 }
 
-vector<Enfermedad*> Paciente::getLista()
+vector<Enfermedad*>* Paciente::getLista()const
 {
-	return *listaEnfermedades;
+	return listaEnfermedades;
 }
 
 Paciente::~Paciente()

@@ -13,8 +13,8 @@ public:
 	Enfermedad();
 	Enfermedad(string, string);
 
-	string getNombre();
-	string getSecuencia();
+	string getNombre()const;
+	string getSecuencia()const;
 
 	void setNombre(string);
 	void setSecuencia(string);

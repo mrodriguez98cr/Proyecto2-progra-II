@@ -6,7 +6,7 @@
 using namespace std;
 class Paciente
 {
-private:
+public:
 	string id;
 	string nombre;
 	string telefono;
@@ -18,12 +18,12 @@ public:
 
 	Paciente(string, string, string, string, string);//agregar lista
 
-	string getID();
-	string getNombre();
-	string getTelefono();
-	string getEmail();
-	string getSecuencia();
-	vector<Enfermedad*> getLista();
+	string getID()const;
+	string getNombre()const;
+	string getTelefono()const;
+	string getEmail()const;
+	string getSecuencia()const;
+	vector<Enfermedad*>* getLista()const;
 	~Paciente();
 
 	void setID(string);

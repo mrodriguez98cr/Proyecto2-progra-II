@@ -12,12 +12,12 @@ Enfermedad::Enfermedad(string enfermedad, string secuencia)
 	this->secuencia = secuencia;
 }
 
-string Enfermedad::getNombre()
+string Enfermedad::getNombre()const
 {
 	return nombre;
 }
 
-string Enfermedad::getSecuencia()
+string Enfermedad::getSecuencia()const
 {
 	return secuencia;
 }

@@ -1,4 +1,6 @@
 #include "MenuCarga.h"
+#include "JsonWriter.h"
+#include "IWriter.h"
 
 char MenuCarga::mostrarOpciones()
 {
@@ -102,6 +104,7 @@ void MenuCarga::generador()
 		cout << enfer->toString();
 	}
 	system("pause");
+
 
 	//aqui se tiene que cargar la lista en json
 }
