@@ -107,4 +107,11 @@ void MenuCarga::generador()
 
 
 	//aqui se tiene que cargar la lista en json
+	IWriter<Paciente>* writer = new JsonWriter<Paciente>("Datos_Geneticos.json");
+	for (auto& enfer : *pacientes)
+	{
+		writer->escribir(*enfer);
+	}
+
+	delete writer;
 }

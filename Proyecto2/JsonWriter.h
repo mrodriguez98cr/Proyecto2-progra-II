@@ -33,7 +33,7 @@ public:
 		}
 	}
 
-	void cerrar() override
+	void cerrar() 
 	{
 		ofstream salida;
 		salida.open(rutaArchivo, ios::out);
