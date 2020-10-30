@@ -9,4 +9,5 @@ public:
 	virtual void escribir(T elemento) = 0;
 	virtual void escribirTodos(vector<T>* elementos) = 0;
 	virtual ~IWriter() = default;
+	virtual void cerrar() = 0;
 };

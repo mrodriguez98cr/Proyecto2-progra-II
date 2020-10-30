@@ -55,5 +55,11 @@ public:
 	~CsvReader()
 	{
 		delete this->transformadorCsv;
+	
+	}
+
+	void cerrar() override
+	{
+		this->entrada.close();
 	}
 };

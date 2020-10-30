@@ -64,4 +64,9 @@ public:
 		this->salida.close();
 		delete this->transformadorCsv;
 	}
+
+	void cerrar() override
+	{
+		this->salida.close();
+	}
 };

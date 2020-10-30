@@ -8,4 +8,5 @@ class IReader
 public:
 	virtual vector<T>* leerTodos() = 0;
 	virtual ~IReader() = default;
+	virtual void cerrar() = 0;
 };

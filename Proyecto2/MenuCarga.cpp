@@ -81,6 +81,8 @@ void MenuCarga::cargarPacientes()
 		cout << persona->toString() << endl;
 	}
 	system("pause");
+	readerp->cerrar();
+	delete readerp;
 }
 
 void MenuCarga::cargarEnfermedades()
@@ -93,6 +95,8 @@ void MenuCarga::cargarEnfermedades()
 		cout << enfer->toString() << endl;
 	}
 	system("pause");
+	readerp->cerrar();
+	delete readerp;
 }
 
 void MenuCarga::generador()
@@ -112,6 +116,8 @@ void MenuCarga::generador()
 	{
 		writer->escribir(*enfer);
 	}
+
+	writer->cerrar();
 
 	delete writer;
 }
