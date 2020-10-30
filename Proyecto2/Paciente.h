@@ -17,7 +17,7 @@ public:
 public:
 
 	Paciente(string, string, string, string, string);//agregar lista
-
+	Paciente();
 	string getID()const;
 	string getNombre()const;
 	string getTelefono()const;

@@ -10,6 +10,16 @@ Paciente::Paciente(string id, string name, string tel, string email, string secu
 	this->listaEnfermedades=new vector<Enfermedad*>();
 }
 
+Paciente::Paciente()
+{
+	this->id = " ";
+	this->nombre = " ";
+	this->telefono = " ";
+	this->email = " ";
+	this->secuencia = " ";
+	this->listaEnfermedades = new vector<Enfermedad*>();
+}
+
 string Paciente::getID()const
 {
 	return id;
