@@ -47,8 +47,8 @@ void to_json(json& j, const Paciente& paciente)
 
 void from_json(const json& j, Enfermedad& paciente)
 {
-	paciente.setNombre(j.at("numeroCalle").get<string>());
-	paciente.setSecuencia(j.at("numeroAvenida").get<string>());
+	paciente.setNombre(j.at("nombre").get<string>());
+	paciente.setSecuencia(j.at("secuencia").get<string>());
 	
 }
 

@@ -46,16 +46,16 @@ void MenuAnalizar::invocarMenu()
 		switch (opcion)
 		{
 		case '1':
-			//this->menuAdmin->invocarMenu();
+			this->leer();
 			break;
 		case '2':
-			//this->menuCobro->invocarMenu();
+			this->analisisUno();
 			break;
 		case '3':
-			//this->menuCobro->invocarMenu();
+			this->analisisdos();
 			break;
 		case '4':
-			//this->menuCobro->invocarMenu();
+			this->analisistres();
 			break;
 		case opcionSalida:
 			break;
@@ -66,5 +66,28 @@ void MenuAnalizar::invocarMenu()
 }
 
 MenuAnalizar::~MenuAnalizar()
+{
+}
+
+void MenuAnalizar::leer()
+{
+	/*IReader<Paciente>* reader = new JsonReader<Paciente>("Datos_Geneticos.json");
+	vector<Paciente>* x = reader->leerTodos();
+	for (auto& enfes : *x)
+	{
+		cout << enfes.toString();
+	}
+	system("pause");*/
+}
+
+void MenuAnalizar::analisisUno()
+{
+}
+
+void MenuAnalizar::analisisdos()
+{
+}
+
+void MenuAnalizar::analisistres()
 {
 }
