@@ -1,6 +1,7 @@
-#include "MenuCarga.h"
+﻿#include "MenuCarga.h"
 #include "JsonWriter.h"
 #include "IWriter.h"
+#include <windows.h>
 
 char MenuCarga::mostrarOpciones()
 {
@@ -73,13 +74,29 @@ MenuCarga::~MenuCarga()
 
 void MenuCarga::cargarPacientes()
 {
-	IReader<Paciente*> *readerp = new CsvReader<Paciente*>("pacientes.csv", new TransformadorCsvPaciente());
+	int contador = 1;
+	
+	cout<<logo();
+	cout << "           Cargando Pacientes.cvs " << endl;
+	cout << "      *********************************" << endl << endl;
+	cout << "      [%%%%"; Sleep(500); cout << "%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%]"<<endl<<endl; 
+	cout << "      *********************************" << endl;
+	Sleep(1000);
+	
+	IReader<Paciente*>* readerp = new CsvReader<Paciente*>("pacientes.csv", new TransformadorCsvPaciente());
 	pacientes = readerp->leerTodos();
 	pacientes->erase(pacientes->begin());
-	for (auto& persona : *pacientes)
+
+	for (auto& pas : *pacientes)
 	{
-		cout << persona->toString() << endl;
+		cout << "	[ " << contador << " ] " << pas->miniString() << endl;
+		Sleep(50);
+		contador++;
 	}
+
+	cout << endl<<"          Pacientes.cvs cargado 100% " << endl;
+	cout << "          Total de Pacientes: " << pacientes->size() << endl<<endl;
+	cout << "      *********************************" << endl<<endl;
 	system("pause");
 	readerp->cerrar();
 	delete readerp;
@@ -87,13 +104,28 @@ void MenuCarga::cargarPacientes()
 
 void MenuCarga::cargarEnfermedades()
 {
+	cout << logo();
+	cout << "           Cargando Enfermedades.cvs " << endl;
+	cout << "      *********************************" << endl << endl;
+	cout << "      [%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%]" << endl << endl;
+	cout << "      *********************************" << endl;
+	Sleep(1000);
 	IReader<Enfermedad*>* readerp = new CsvReader<Enfermedad*>("enfermedades.csv", new TransformadorCsvEnfermedad());
 	enfermedades = readerp->leerTodos();
 	enfermedades->erase(enfermedades->begin());
+	int contador = 1;
 	for (auto& enfer : *enfermedades)
 	{
-		cout << enfer->toString() << endl;
+		cout << "	[ " <<contador<<" ] "<<enfer->toString() << endl;
+		Sleep(50);
+		contador++;
 	}
+	Sleep(1000);
+
+	cout << endl << "          Pacientes.cvs cargado 100% " << endl;
+	cout << "          Total de enfermedades: " << enfermedades->size() << endl<<endl;
+	cout << "      *********************************" << endl << endl;
+
 	system("pause");
 	readerp->cerrar();
 	delete readerp;
@@ -101,13 +133,22 @@ void MenuCarga::cargarEnfermedades()
 
 void MenuCarga::generador()
 {
-	
+	cout << logo();
+	cout << "           Generando Datos_Geneticos.json " << endl;
+	cout << "      *********************************" << endl << endl;
+	cout << "      [%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%]" << endl << endl;
+	cout << "      *********************************" << endl;
+	Sleep(1000);
 	for (auto& enfer : *pacientes)
 	{
 		enfer->agregarLista(*enfermedades);
+		Sleep(50);
 		cout << enfer->toString();
 	}
-	system("pause");
+	
+	cout << endl << "          Datos_Geneticos.json generado al 100% " << endl;
+	cout << "          Total de pacientes: " << pacientes->size() << endl << endl;
+	cout << "      *********************************" << endl << endl;
 
 
 	//aqui se tiene que cargar la lista en json
@@ -120,4 +161,6 @@ void MenuCarga::generador()
 	writer->cerrar();
 
 	delete writer;
+
+	system("pause");
 }

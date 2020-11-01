@@ -34,6 +34,7 @@ public:
 	void setLista(vector<Enfermedad*>*);
 	
 	string toString();
+	string miniString();
 
 
 	void agregarLista(vector<Enfermedad*> enfe);

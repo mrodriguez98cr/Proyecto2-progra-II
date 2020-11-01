@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BootStrater.h" />
     <ClInclude Include="CsvReader.h" />
     <ClInclude Include="CsvWriter.h" />
     <ClInclude Include="Enfermedad.h" />

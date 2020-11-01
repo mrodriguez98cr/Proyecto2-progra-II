@@ -40,6 +40,11 @@ MenuAnalizar::MenuAnalizar()
 {
 }
 
+MenuAnalizar::MenuAnalizar(vector<Paciente>* Pacientes)
+{
+	this->Pacientes = Pacientes;
+}
+
 void MenuAnalizar::invocarMenu()
 {
 	const char opcionSalida = '5';
@@ -75,8 +80,8 @@ MenuAnalizar::~MenuAnalizar()
 void MenuAnalizar::leer()
 {
 	IReader<Paciente>* reader = new JsonReader<Paciente>("Datos_Geneticos.json");
-	vector<Paciente>* x = reader->leerTodos();
-	for (auto& enfes : *x)
+	Pacientes = reader->leerTodos();
+	for (auto& enfes : *Pacientes)
 	{
 		cout << enfes.toString();
 	}

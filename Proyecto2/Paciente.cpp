@@ -88,22 +88,29 @@ void Paciente::setLista(vector<Enfermedad*>* h)
 string Paciente::toString()
 {
 	stringstream s;
-
-	s << "	ID: " << id << endl
-		<< "	Nombre: " << nombre << endl
-		<< "	telefono: " << telefono << endl
-		<< "	Email: " << email << endl;
-		//<< "	Secuencia: " <<secuencia<< endl;
-	s << "----------------------------------------" << endl
-		<< "	Lista de enfermedades: " << endl
-		<< "----------------------------------------"<< endl;
+	s << endl<<"-------------------------------------------------------------------------" << endl;
+	s << "   ID: " << id << "     NOMBRE: " << nombre
+		<<endl <<"   TELEFONO: " << telefono << "     EMAIL: " << email<<endl;
+	s << "-------------------------------------------------------------------------" << endl;
+		s<< "          LISTA DE ENFERMEDADES: " << endl
+		<< "-------------------------------------------------------------------------"<< endl;
 	for (auto& enfer : *listaEnfermedades)
 	{
 		s << enfer->toString() << endl;
 	}
-	s << endl<<endl;
+	s <<endl;
 
 	
+
+	return s.str();
+}
+
+string Paciente::miniString()
+{
+	stringstream s;
+
+	s << "   ID: " << id << "     Nombre: " << nombre << endl;
+
 
 	return s.str();
 }

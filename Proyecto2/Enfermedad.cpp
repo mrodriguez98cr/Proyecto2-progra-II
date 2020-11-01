@@ -36,8 +36,8 @@ string Enfermedad::toString()
 {
 	stringstream s;
 
-	s << "	Enfermedad: " << nombre << "	Secuencia: " << secuencia << endl
-		<< "----------------------------------------" << endl;
+	s << "   Enfermedad: " << nombre << "     Secuencia: " << secuencia << endl;
+	
 	
 	return s.str();
 }
