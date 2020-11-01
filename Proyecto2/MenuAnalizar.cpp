@@ -1,6 +1,9 @@
 #include "MenuAnalizar.h"
 #include "IReader.h"
+#include "IWriter.h"
 #include "JsonReader.h"
+#include "BinaryReader.h"
+#include "BinaryWriter.h"
 #include "Paciente.h"
 
 char MenuAnalizar::mostrarOpciones()
@@ -85,6 +88,10 @@ void MenuAnalizar::leer()
 	{
 		cout << enfes.toString();
 	}
+
+	/*IWriter<Paciente>* writer = new BinaryWriter<Paciente>("base_datos.dat", new TransformadorBinarioPaciente());
+	writer->escribirTodos(Pacientes);*/
+
 	system("pause");
 }
 
