@@ -1,4 +1,7 @@
 #include "MenuAnalizar.h"
+#include "IReader.h"
+#include "JsonReader.h"
+#include "Paciente.h"
 
 char MenuAnalizar::mostrarOpciones()
 {
@@ -71,13 +74,13 @@ MenuAnalizar::~MenuAnalizar()
 
 void MenuAnalizar::leer()
 {
-	/*IReader<Paciente>* reader = new JsonReader<Paciente>("Datos_Geneticos.json");
+	IReader<Paciente>* reader = new JsonReader<Paciente>("Datos_Geneticos.json");
 	vector<Paciente>* x = reader->leerTodos();
 	for (auto& enfes : *x)
 	{
 		cout << enfes.toString();
 	}
-	system("pause");*/
+	system("pause");
 }
 
 void MenuAnalizar::analisisUno()
