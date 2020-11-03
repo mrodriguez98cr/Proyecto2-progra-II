@@ -5,6 +5,7 @@
 #include "BinaryReader.h"
 #include "BinaryWriter.h"
 #include "Paciente.h"
+#include <Windows.h>
 
 char MenuAnalizar::mostrarOpciones()
 {
@@ -41,6 +42,7 @@ string MenuAnalizar::logo()
 
 MenuAnalizar::MenuAnalizar()
 {
+	this->Pacientes = nullptr;
 }
 
 MenuAnalizar::MenuAnalizar(vector<Paciente>* Pacientes)
@@ -82,17 +84,35 @@ MenuAnalizar::~MenuAnalizar()
 
 void MenuAnalizar::leer()
 {
+	cout << logo();
+	cout << "           LEYENDO Datos_Geneticos.json " << endl;
+	cout << "      *********************************" << endl << endl;
+	cout << "      [%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%]" << endl << endl;
+	cout << "      *********************************" << endl;
+	Sleep(1000);
 	IReader<Paciente>* reader = new JsonReader<Paciente>("Datos_Geneticos.json");
+	//vector<Paciente*> *pas = NULL;
 	Pacientes = reader->leerTodos();
+	
+	
 	for (auto& enfes : *Pacientes)
 	{
+		Sleep(50);
 		cout << enfes.toString();
+		
 	}
 
-	/*IWriter<Paciente>* writer = new BinaryWriter<Paciente>("base_datos.dat", new TransformadorBinarioPaciente());
-	writer->escribirTodos(Pacientes);*/
+	
 
-	system("pause");
+	cout << endl << "          Datos_Geneticos.json generado al 100% " << endl;
+	cout << "          Total de pacientes: " << Pacientes->size() << endl << endl;
+	cout << "      *********************************" << endl << endl;
+
+	/*IWriter<Paciente>* writer = new BinaryWriter<Paciente>("base_datos.dat", new TransformadorBinarioPaciente());
+	
+	writer->escribirTodos(Pacientes);
+
+	system("pause");*/
 }
 
 void MenuAnalizar::analisisUno()

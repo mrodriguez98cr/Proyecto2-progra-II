@@ -85,7 +85,7 @@ void MenuCarga::cargarPacientes()
 	
 	IReader<Paciente*>* readerp = new CsvReader<Paciente*>("pacientes.csv", new TransformadorCsvPaciente());
 	pacientes = readerp->leerTodos();
-	pacientes->erase(pacientes->begin());
+	pacientes->erase(pacientes->begin());//ES PARA BORRAR LA PRIMERA LINEA
 
 	for (auto& pas : *pacientes)
 	{
@@ -139,6 +139,7 @@ void MenuCarga::generador()
 	cout << "      [%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%]" << endl << endl;
 	cout << "      *********************************" << endl;
 	Sleep(1000);
+	
 	for (auto& enfer : *pacientes)
 	{
 		enfer->agregarLista(*enfermedades);

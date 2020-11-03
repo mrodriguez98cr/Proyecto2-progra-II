@@ -25,7 +25,7 @@ public:
 		this->modeloJson.push_back(elementoJson);
 	}
 
-	void escribirTodos(vector<T>* elementos) override
+	void escribirTodos(vector<T> *elementos) override
 	{
 		for (auto& actual : *elementos)
 		{

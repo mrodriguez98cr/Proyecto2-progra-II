@@ -129,7 +129,7 @@ bool Paciente::buscador(string x)
 {
 	auto it = secuencia.find(x);
 
-	if (it != std::string::npos)
+	if (it != string::npos)
 		return true;
 	else
 		return false;
