@@ -45,7 +45,7 @@ MenuAnalizar::MenuAnalizar()
 	this->Pacientes = nullptr;
 }
 
-MenuAnalizar::MenuAnalizar(vector<Paciente>* Pacientes)
+MenuAnalizar::MenuAnalizar(vector<Paciente*>* Pacientes)
 {
 	this->Pacientes = Pacientes;
 }
@@ -91,26 +91,26 @@ void MenuAnalizar::leer()
 	cout << "      *********************************" << endl;
 	Sleep(1000);
 	IReader<Paciente>* reader = new JsonReader<Paciente>("Datos_Geneticos.json");
-	//vector<Paciente*> *pas = NULL;
-	Pacientes = reader->leerTodos();
-
-	
-	for (auto& enfes : *Pacientes)
-	{
-		Sleep(50);
-		cout << enfes.toString();
-		
-	}
+	vector<Paciente>* pacientesJson = new vector<Paciente>();
+	pacientesJson = reader->leerTodos();
 	delete reader;
-	
-
 	cout << endl << "          Datos_Geneticos.json generado al 100% " << endl;
-	cout << "          Total de pacientes: " << Pacientes->size() << endl << endl;
+	cout << "          Total de pacientes: " << pacientesJson->size() << endl << endl;
 	cout << "      *********************************" << endl << endl;
+
+	system("pause");
+	system("cls");
+
+	cout << logo();
+	cout << "           Generando base_datos.dat " << endl;
+	cout << "      *********************************" << endl << endl;
+	cout << "      [%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%]" << endl << endl;
+	cout << "      *********************************" << endl;
+	Sleep(1000);
 
 	IWriter<Paciente*>* writer = new BinaryWriter<Paciente*>("base_datos.dat", new TransformadorBinarioPaciente());
 	
-	for (auto& paciente : *Pacientes)
+	for (auto& paciente : *pacientesJson)
 	{
 		writer->escribir(&paciente);
 		
@@ -118,13 +118,30 @@ void MenuAnalizar::leer()
 
 	delete writer;
 
-	system("pause");
+	cout << endl << "         base_datos.dat generado al 100% " << endl;
+	cout << "          Total de pacientes: " << pacientesJson->size() << endl << endl;
+	cout << "      *********************************" << endl << endl;
 
+	system("pause");
+	system("cls");
+
+	cout << logo();
+	cout << "           LEYENDO base_datos.dat " << endl;
+	cout << "      *********************************" << endl << endl;
+	cout << "      [%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%]" << endl << endl;
+	cout << "      *********************************" << endl;
+	Sleep(1000);
 
 	IReader<Paciente*>* readerbin = new BinaryReader<Paciente*>("base_datos.dat", new TransformadorBinarioPaciente());
-	vector<Paciente*>*v=readerbin->leerTodos(); //asignar a una lista 
+	Pacientes=readerbin->leerTodos(); //asignar a una lista 
 	
+	
+
 	delete readerbin;
+
+	cout << endl << "         base_datos.dat leido al 100% " << endl;
+	cout << "          Total de pacientes: " << Pacientes->size() << endl << endl;
+	cout << "      *********************************" << endl << endl;
 
 	//writer->escribirTodos(Pacientes);
 

@@ -12,11 +12,11 @@ class MenuAnalizar
 private:
 	char mostrarOpciones();
 	string logo();
-	vector<Paciente> *Pacientes;
+	vector<Paciente*> *Pacientes;
 
 public:
 	MenuAnalizar();
-	MenuAnalizar(vector<Paciente>*);
+	MenuAnalizar(vector<Paciente*>*);
 	void invocarMenu();
 	~MenuAnalizar();
 	void leer();

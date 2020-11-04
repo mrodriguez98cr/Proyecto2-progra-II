@@ -17,7 +17,7 @@ public:
 	{
 		vector<Paciente*>* personas = NULL;
 		vector<Enfermedad*>* enfer = NULL;
-		vector<Paciente>* pacientes= new vector<Paciente>();
+		vector<Paciente*>* pacientes= new vector<Paciente*>();
 		MenuAnalizar* ma = new MenuAnalizar(pacientes);
 		MenuCarga* mc = new MenuCarga(enfer, personas);
 		Menu* men = new Menu(mc, ma);
