@@ -93,7 +93,7 @@ void MenuAnalizar::leer()
 	IReader<Paciente>* reader = new JsonReader<Paciente>("Datos_Geneticos.json");
 	//vector<Paciente*> *pas = NULL;
 	Pacientes = reader->leerTodos();
-	
+
 	
 	for (auto& enfes : *Pacientes)
 	{
@@ -101,18 +101,34 @@ void MenuAnalizar::leer()
 		cout << enfes.toString();
 		
 	}
-
+	delete reader;
 	
 
 	cout << endl << "          Datos_Geneticos.json generado al 100% " << endl;
 	cout << "          Total de pacientes: " << Pacientes->size() << endl << endl;
 	cout << "      *********************************" << endl << endl;
 
-	/*IWriter<Paciente>* writer = new BinaryWriter<Paciente>("base_datos.dat", new TransformadorBinarioPaciente());
+	IWriter<Paciente*>* writer = new BinaryWriter<Paciente*>("base_datos.dat", new TransformadorBinarioPaciente());
 	
-	writer->escribirTodos(Pacientes);
+	for (auto& paciente : *Pacientes)
+	{
+		writer->escribir(&paciente);
+		
+	}
 
-	system("pause");*/
+	delete writer;
+
+	system("pause");
+
+
+	IReader<Paciente*>* readerbin = new BinaryReader<Paciente*>("base_datos.dat", new TransformadorBinarioPaciente());
+	vector<Paciente*>*v=readerbin->leerTodos(); //asignar a una lista 
+	
+	delete readerbin;
+
+	//writer->escribirTodos(Pacientes);
+
+	system("pause");
 }
 
 void MenuAnalizar::analisisUno()
