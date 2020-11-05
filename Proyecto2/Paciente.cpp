@@ -125,10 +125,10 @@ void Paciente::calculador()
 	float total = A + C + G + T;
 
 	cout << "	La concentración de cada base nitrogenada de: " << nombre << ":\n"
-		<< "	A: " << (A / total) * 100 << "%" << endl
-		<< "	C: " << (C / total) * 100 << "%" << endl
-		<< "	G: " << (G / total) * 100 << "%" << endl
-		<< "	T: " << (T / total) * 100 << "%" << endl;
+		<< "		A: " << (A / total) * 100 << "%" << endl
+		<< "		C: " << (C / total) * 100 << "%" << endl
+		<< "		G: " << (G / total) * 100 << "%" << endl
+		<< "		T: " << (T / total) * 100 << "%" << endl;
 }
 
 float Paciente::cuenta(string x)
