@@ -7,6 +7,7 @@
 #include"CsvReader.h"
 #include <vector>
 #include "IReader.h"
+#include "MiExepcion.h"
 using namespace std;
 
 class MenuCarga

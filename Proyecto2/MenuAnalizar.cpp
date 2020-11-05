@@ -6,6 +6,8 @@
 #include "BinaryWriter.h"
 #include "Paciente.h"
 #include <Windows.h>
+#include "MiExepcion.h"
+#include <exception>
 
 char MenuAnalizar::mostrarOpciones()
 {
@@ -154,6 +156,53 @@ void MenuAnalizar::analisisUno()
 
 void MenuAnalizar::analisisdos()
 {
+	cout << logo();
+	cout << "           Analisis # 2 " << endl;
+	cout << "      *********************************" << endl << endl;
+	cout << "      [%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%]" << endl << endl;
+	cout << "      *********************************" << endl;
+	Sleep(500);
+	int contador = 1;
+	for (auto& pas : *Pacientes)
+	{
+		cout << "	[ " << contador << " ] " << pas->miniString() << endl;
+		Sleep(50);
+		contador++;
+	}
+	string x;
+	cout << "	Ingrese el numero de ID del Paciente: "; cin >> x;
+	
+	bool n=TRUE;
+	try {
+		for (auto& pas : *Pacientes)
+		{
+			if (pas->getID() == x)
+			{
+				cout << pas->toString() << endl;
+				pas->calculador();
+				n = FALSE;
+
+				system("pause");
+				
+			}
+
+		}
+		if (n==TRUE)
+			throw exception();
+
+	}
+	catch (...)
+	{
+		cerr << "	*******************" << endl;
+		cerr << "	Paciente Invalido" << endl;
+		cerr << "	*******************" << endl;
+	}
+
+	
+
+	system("pause");
+
+	
 }
 
 void MenuAnalizar::analisistres()

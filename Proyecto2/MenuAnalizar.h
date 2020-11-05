@@ -3,6 +3,7 @@
 #include <sstream>
 #include <vector>
 #include "Paciente.h"
+#include "MiExepcion.h"
 
 
 using namespace std;

@@ -153,6 +153,7 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuAnalizar.h" />
     <ClInclude Include="MenuCarga.h" />
+    <ClInclude Include="MiExepcion.h" />
     <ClInclude Include="Paciente.h" />
     <ClInclude Include="TransformadorBinario.h" />
     <ClInclude Include="TransformadorCsv.h" />

@@ -36,6 +36,9 @@ public:
 	string toString();
 	string miniString();
 
+	void calculador();
+	float cuenta(string);
+
 
 	void agregarLista(vector<Enfermedad*> enfe);
 	
