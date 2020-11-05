@@ -156,6 +156,42 @@ void Paciente::agregarLista(vector<Enfermedad*> enfe)
 
 }
 
+void Paciente::probabilizador()
+{
+	
+	cout << miniString()<<endl;
+	
+	if (listaEnfermedades->size() <= 1)
+	{
+		cout << "	La probalididad de enfermarse de: " << endl;
+		for (auto& m : *listaEnfermedades)
+			cout << m->toString();
+		cout <<"	Es de 0% " << endl<<endl;
+		cout << "	***************************** " << endl << endl;
+	}
+	else
+		if (listaEnfermedades->size() == 2)
+		{
+			cout << "	La probalididad de enfermarse de: " << endl;
+			for (auto& m : *listaEnfermedades)
+				cout << m->toString();
+			cout << "	Es de 35% " << endl << endl;
+			cout << "	***************************** " << endl << endl;
+		}
+		else
+			if (listaEnfermedades->size() >= 3)
+			{
+				cout << "	La probalididad de enfermarse de: " << endl;
+				for (auto& m : *listaEnfermedades)
+					cout << m->toString();
+				cout << "	Es de 65% " << endl << endl;
+				cout << "	***************************** " << endl << endl;
+			}
+
+
+
+}
+
 bool Paciente::buscador(string x)
 {
 	auto it = secuencia.find(x);

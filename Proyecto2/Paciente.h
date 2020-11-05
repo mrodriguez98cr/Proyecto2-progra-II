@@ -41,6 +41,7 @@ public:
 
 
 	void agregarLista(vector<Enfermedad*> enfe);
+	void probabilizador();
 	
 
 	bool buscador(string x);

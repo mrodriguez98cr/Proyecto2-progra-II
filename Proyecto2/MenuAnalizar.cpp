@@ -207,4 +207,9 @@ void MenuAnalizar::analisisdos()
 
 void MenuAnalizar::analisistres()
 {
+	for (auto& pas : *Pacientes)
+	{
+		 pas->probabilizador();
+	}
+	system("pause");
 }
