@@ -188,13 +188,13 @@ void MenuAnalizar::analisisdos()
 
 		}
 		if (n==TRUE)
-			throw exception();
+			throw exception("	Paciente Invalido");
 
 	}
-	catch (...)
+	catch (exception& e)
 	{
 		cerr << "	*******************" << endl;
-		cerr << "	Paciente Invalido" << endl;
+		cerr << "	" << e.what() << endl;
 		cerr << "	*******************" << endl;
 	}
 
