@@ -8,6 +8,7 @@
 #include <Windows.h>
 #include "MiExepcion.h"
 #include <exception>
+#include <map>
 
 char MenuAnalizar::mostrarOpciones()
 {
@@ -155,7 +156,26 @@ void MenuAnalizar::analisisUno()
 {
 	try
 	{
+		if (pr == false)
+			throw exception("	Archivo no cargado");
+		else
+		{
+			map<string, int> mapaEnfermedades;
+			for (auto& pas : *Pacientes)
+				for (auto& enfe : *pas->getLista())
+					mapaEnfermedades[enfe->getNombre()]++;
+			cout << endl;
+			system("pause");
 
+			for (auto& pareja : mapaEnfermedades)
+			{
+				cout << "Nombre de la enfermedad: " << pareja.first << endl;
+				cout << "Ocurrencias: " << pareja.second << endl;
+			}
+			system("pause");
+
+
+		}
 	}
 	catch (exception& e)
 	{
