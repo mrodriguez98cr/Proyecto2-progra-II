@@ -14,6 +14,7 @@ private:
 	char mostrarOpciones();
 	string logo();
 	vector<Paciente*> *Pacientes;
+	bool pr = false;
 
 public:
 	MenuAnalizar();

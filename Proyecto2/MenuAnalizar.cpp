@@ -144,7 +144,8 @@ void MenuAnalizar::leer()
 	cout << endl << "         base_datos.dat leido al 100% " << endl;
 	cout << "          Total de pacientes: " << Pacientes->size() << endl << endl;
 	cout << "      *********************************" << endl << endl;
-
+	
+	pr = TRUE;
 	//writer->escribirTodos(Pacientes);
 
 	system("pause");
@@ -152,50 +153,75 @@ void MenuAnalizar::leer()
 
 void MenuAnalizar::analisisUno()
 {
-}
-
-void MenuAnalizar::analisisdos()
-{
-	cout << logo();
-	cout << "           Analisis # 2 " << endl;
-	cout << "      *********************************" << endl << endl;
-	cout << "      [%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%]" << endl << endl;
-	cout << "      *********************************" << endl;
-	Sleep(500);
-	int contador = 1;
-	for (auto& pas : *Pacientes)
+	try
 	{
-		cout << "	[ " << contador << " ] " << pas->miniString() << endl;
-		Sleep(50);
-		contador++;
-	}
-	string x;
-	cout << "	Ingrese el numero de ID del Paciente: "; cin >> x;
-	
-	bool n=TRUE;
-	try {
-		for (auto& pas : *Pacientes)
-		{
-			if (pas->getID() == x)
-			{
-				cout << pas->toString() << endl;
-				pas->calculador();
-				n = FALSE;
-
-				system("pause");
-				
-			}
-
-		}
-		if (n==TRUE)
-			throw exception("	Paciente Invalido");
 
 	}
 	catch (exception& e)
 	{
-		cerr << "	*******************" << endl;
-		cerr << "	" << e.what() << endl;
-		cerr << "	*******************" << endl;
+		cerr << "	**************************" << endl;
+		cerr << e.what() << endl;
+		cerr << "	**************************" << endl;
+		system("pause");
+	}
+}
+
+void MenuAnalizar::analisisdos()
+{
+	try {
+		if (pr == false)
+		{
+			throw exception("Archivo no Cargado");
+		}
+		else
+		cout << logo();
+		cout << "           Analisis # 2 " << endl;
+		cout << "      *********************************" << endl << endl;
+		cout << "      [%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%]" << endl << endl;
+		cout << "      *********************************" << endl;
+		Sleep(500);
+		int contador = 1;
+		for (auto& pas : *Pacientes)
+		{
+			cout << "	[ " << contador << " ] " << pas->miniString() << endl;
+			Sleep(50);
+			contador++;
+		}
+		string x;
+		cout << "	Ingrese el numero de ID del Paciente: "; cin >> x;
+
+		bool n = TRUE;
+		try {
+			for (auto& pas : *Pacientes)
+			{
+				if (pas->getID() == x)
+				{
+					cout << pas->toString() << endl;
+					pas->calculador();
+					n = FALSE;
+
+				
+
+				}
+
+			}
+			if (n == TRUE)
+				throw exception("	Paciente Invalido");
+
+		}
+		catch (exception& e)
+		{
+			cerr << "	*******************" << endl;
+			cerr << "	" << e.what() << endl;
+			cerr << "	*******************" << endl;
+		}
+	}
+	catch (exception& e)
+	{
+		cerr << "	**************************" << endl;
+		cerr <<"	"<< e.what() << endl;
+		cerr << "	**************************" << endl;
+		system("pause");
 	}
 
 	
@@ -207,9 +233,29 @@ void MenuAnalizar::analisisdos()
 
 void MenuAnalizar::analisistres()
 {
-	for (auto& pas : *Pacientes)
-	{
-		 pas->probabilizador();
+	try {
+		if (pr == false)
+		{
+			throw exception("Archivo no Cargado");
+		}
+		else
+			cout << logo();
+		cout << "           Analisis # 2 " << endl;
+		cout << "      *********************************" << endl << endl;
+		cout << "      [%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%]" << endl << endl;
+		cout << "      *********************************" << endl;
+		Sleep(500);
+		for (auto& pas : *Pacientes)
+		{
+			pas->probabilizador();
+		}
+		system("pause");
 	}
-	system("pause");
+	catch(exception& e)
+		{
+		cerr << "	*******************" << endl;
+		cerr << "	" << e.what() << endl;
+		cerr << "	*******************" << endl;
+		system("pause");
+		}
 }

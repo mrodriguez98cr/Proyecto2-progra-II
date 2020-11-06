@@ -17,6 +17,8 @@ private:
 	string logo();
 	vector<Enfermedad*> *enfermedades;
 	vector<Paciente*> *pacientes;
+	bool p = false;
+	bool e = false;
 
 
 public:

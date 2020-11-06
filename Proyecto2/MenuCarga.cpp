@@ -2,6 +2,7 @@
 #include "JsonWriter.h"
 #include "IWriter.h"
 #include <windows.h>
+#include <exception>
 
 char MenuCarga::mostrarOpciones()
 {
@@ -76,30 +77,32 @@ void MenuCarga::cargarPacientes()
 {
 	int contador = 1;
 	
-	cout<<logo();
-	cout << "           Cargando Pacientes.cvs " << endl;
-	cout << "      *********************************" << endl << endl;
-	cout << "      [%%%%"; Sleep(500); cout << "%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%]"<<endl<<endl; 
-	cout << "      *********************************" << endl;
-	Sleep(1000);
+		cout << logo();
+		cout << "           Cargando Pacientes.cvs " << endl;
+		cout << "      *********************************" << endl << endl;
+		cout << "      [%%%%"; Sleep(500); cout << "%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%]" << endl << endl;
+		cout << "      *********************************" << endl;
+		Sleep(1000);
+
+		IReader<Paciente*>* readerp = new CsvReader<Paciente*>("pacientes.csv", new TransformadorCsvPaciente());
+		pacientes = readerp->leerTodos();
+		pacientes->erase(pacientes->begin());//ES PARA BORRAR LA PRIMERA LINEA
+
+		for (auto& pas : *pacientes)
+		{
+			cout << "	[ " << contador << " ] " << pas->miniString() << endl;
+			Sleep(50);
+			contador++;
+		}
+
+		cout << endl << "          Pacientes.cvs cargado 100% " << endl;
+		cout << "          Total de Pacientes: " << pacientes->size() << endl << endl;
+		cout << "      *********************************" << endl << endl;
+		system("pause");
+		readerp->cerrar();
+		delete readerp;
+		p = TRUE;
 	
-	IReader<Paciente*>* readerp = new CsvReader<Paciente*>("pacientes.csv", new TransformadorCsvPaciente());
-	pacientes = readerp->leerTodos();
-	pacientes->erase(pacientes->begin());//ES PARA BORRAR LA PRIMERA LINEA
-
-	for (auto& pas : *pacientes)
-	{
-		cout << "	[ " << contador << " ] " << pas->miniString() << endl;
-		Sleep(50);
-		contador++;
-	}
-
-	cout << endl<<"          Pacientes.cvs cargado 100% " << endl;
-	cout << "          Total de Pacientes: " << pacientes->size() << endl<<endl;
-	cout << "      *********************************" << endl<<endl;
-	system("pause");
-	readerp->cerrar();
-	delete readerp;
 }
 
 void MenuCarga::cargarEnfermedades()
@@ -129,39 +132,57 @@ void MenuCarga::cargarEnfermedades()
 	system("pause");
 	readerp->cerrar();
 	delete readerp;
+	e = TRUE;
 }
 
 void MenuCarga::generador()
 {
-	cout << logo();
-	cout << "           Generando Datos_Geneticos.json " << endl;
-	cout << "      *********************************" << endl << endl;
-	cout << "      [%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%]" << endl << endl;
-	cout << "      *********************************" << endl;
-	Sleep(1000);
-	
-	for (auto& enfer : *pacientes)
-	{
-		enfer->agregarLista(*enfermedades);
-		Sleep(50);
-		cout << enfer->toString();
+	try {
+
+		if (p == TRUE && e == TRUE)
+		{
+			cout << logo();
+			cout << "           Generando Datos_Geneticos.json " << endl;
+			cout << "      *********************************" << endl << endl;
+			cout << "      [%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%"; Sleep(500); cout << "%%%%]" << endl << endl;
+			cout << "      *********************************" << endl;
+			Sleep(1000);
+
+			for (auto& enfer : *pacientes)
+			{
+				enfer->agregarLista(*enfermedades);
+				Sleep(50);
+				cout << enfer->toString();
+			}
+
+			cout << endl << "          Datos_Geneticos.json generado al 100% " << endl;
+			cout << "          Total de pacientes: " << pacientes->size() << endl << endl;
+			cout << "      *********************************" << endl << endl;
+
+
+			//aqui se tiene que cargar la lista en json
+			IWriter<Paciente>* writer = new JsonWriter<Paciente>("Datos_Geneticos.json");
+			for (auto& enfer : *pacientes)
+			{
+				writer->escribir(*enfer);
+			}
+
+			writer->cerrar();
+
+			delete writer;
+
+			system("pause");
+		}
+		else
+		{
+			throw exception("	Falta Archivos por Cargar");
+		}
 	}
-	
-	cout << endl << "          Datos_Geneticos.json generado al 100% " << endl;
-	cout << "          Total de pacientes: " << pacientes->size() << endl << endl;
-	cout << "      *********************************" << endl << endl;
-
-
-	//aqui se tiene que cargar la lista en json
-	IWriter<Paciente>* writer = new JsonWriter<Paciente>("Datos_Geneticos.json");
-	for (auto& enfer : *pacientes)
+	catch (exception& e)
 	{
-		writer->escribir(*enfer);
+		cerr << "	**************************" << endl;
+		cerr<<e.what()<<endl;
+		cerr << "	**************************" << endl;
+		system("pause");
 	}
-
-	writer->cerrar();
-
-	delete writer;
-
-	system("pause");
 }
