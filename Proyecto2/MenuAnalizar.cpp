@@ -160,6 +160,12 @@ void MenuAnalizar::analisisUno()
 			throw exception("	Archivo no cargado");
 		else
 		{
+			cout << logo();
+			cout << "           Analisis # 2 " << endl;
+			cout << "      *********************************" << endl << endl;
+			cout << "      [%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%"; Sleep(250); cout << "%%%%]" << endl << endl;
+			cout << "      *********************************" << endl;
+			Sleep(500);
 			map<string, int> mapaEnfermedades;
 			for (auto& pas : *Pacientes)
 				for (auto& enfe : *pas->getLista())
