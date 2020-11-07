@@ -1,11 +1,11 @@
 #include <iostream>
-#include "BootStrater.h"
+#include "BootStrapper.h"
 using namespace std;
 
 int main()
 {
 
-	BootStrater::correrApp();
+	BootStrapper::correrApp();
 
 	return 0;
 

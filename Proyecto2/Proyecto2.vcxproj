@@ -141,7 +141,7 @@
   <ItemGroup>
     <ClInclude Include="BinaryReader.h" />
     <ClInclude Include="BinaryWriter.h" />
-    <ClInclude Include="BootStrater.h" />
+    <ClInclude Include="BootStrapper.h" />
     <ClInclude Include="CsvReader.h" />
     <ClInclude Include="CsvWriter.h" />
     <ClInclude Include="Enfermedad.h" />

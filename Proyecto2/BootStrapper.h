@@ -9,7 +9,7 @@
 #include"CsvReader.h"
 using namespace std;
 
-class BootStrater
+class BootStrapper
 {
 public:
 
